@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{0D4EFF63-F33C-B2D3-53E8-EA51D7035A87}</ProjectGuid>
+    <ProjectGuid>{F61EFFB5-7181-1B5A-23EC-7490DD66BD47}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -59,9 +59,10 @@
     <Compile Include="Assets\Scripts\Player\PlayerMover.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\TooCubeForest\demoScenes\Movement.cs" />
+    <Compile Include="Assets\Scripts\GemGenerator.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Gem.cs" />
-    <Compile Include="Assets\Scripts\GemGenerator.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAnimations.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

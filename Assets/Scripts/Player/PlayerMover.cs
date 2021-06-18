@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(PlayerAnimations))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
 
     private Rigidbody2D _rigidbody;
-    private Animator _animator;
     private SpriteRenderer _sprite;
+    private PlayerAnimations _animations;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
+        _animations = GetComponent<PlayerAnimations>();
     }
 
     private void Update()
@@ -32,7 +32,7 @@ public class PlayerMover : MonoBehaviour
         }
         else
         {
-            Stay();
+            Idle();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -44,28 +44,28 @@ public class PlayerMover : MonoBehaviour
     private void MoveLeft()
     {
         _sprite.flipX = true;
-        _animator.SetFloat("Speed", _speed);
         transform.Translate(-_speed * Time.deltaTime, 0, 0);
+        _animations.Run(_speed);
     }
 
     private void MoveRight()
     {
         _sprite.flipX = false;
-        _animator.SetFloat("Speed", _speed);
         transform.Translate(_speed * Time.deltaTime, 0, 0);
+        _animations.Run(_speed);
     }
 
     private void Jump()
     {
         if (_rigidbody.velocity.y != 0)
             return;
-        
-        _animator.SetTrigger("Jump");
+
         _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Force);
+        _animations.Jump();
     }
 
-    private void Stay()
+    private void Idle()
     {
-        _animator.SetFloat("Speed", 0);
+        _animations.Idle();
     }
 }
